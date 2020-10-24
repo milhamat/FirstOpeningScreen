@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstController: UIViewController {
     
     private var firstView: FirstView!
 
@@ -26,7 +26,7 @@ class FirstViewController: UIViewController {
     }
     
     @objc func mainButtonTapped(_ Sender: UIButton){
-        
+        self.navigationController?.pushViewController(NameController(), animated: true)
     }
 
 

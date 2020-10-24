@@ -7,10 +7,15 @@
 
 import UIKit
 
-class NameViewController: UIViewController {
+class NameController: UIViewController {
+    
+    private var nameView: NameView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameView = NameView(frame: self.view.frame)
+        self.view = self.nameView
 
         
     }
