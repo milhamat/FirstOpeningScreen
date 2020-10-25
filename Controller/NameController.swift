@@ -21,8 +21,9 @@ class NameController: UIViewController {
         self.nameView = NameView(frame: self.view.frame)
         self.view = self.nameView
         
-        self.nameView.randomNameButton.addTarget(self, action: #selector(randomButtonTapped), for: .touchUpInside)
+        nameView.inputNameTextField.delegate = self
         
+        self.nameView.randomNameButton.addTarget(self, action: #selector(randomButtonTapped), for: .touchUpInside)
         
     }
     
@@ -34,6 +35,47 @@ class NameController: UIViewController {
         let randomName = first  + second  + third
         nameView.inputNameTextField.text = randomName
         
+        let htg = nameView.inputNameTextField.text?.count
+        nameView.characterLabel.text = "\(htg!)/25"
+        
+        if nameView.inputNameTextField.text == ""{
+            nameView.characterLabel.text = "0/25"
+        }
     }
 
+}
+
+extension NameController: UITextFieldDelegate {
+        
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        var htg = nameView.inputNameTextField.text?.count
+//        let tbh = htg! - 1
+        nameView.characterLabel.text = "\(htg!)/25"
+        
+        let maxLength = 25
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if currentString == "" {
+            htg = 0
+        }
+        
+        return newString.length <= maxLength
+    }
+    
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameView.inputNameTextField.endEditing(true)
+        // when user pressed DONE
+        
+        if nameView.inputNameTextField.text == ""{
+            nameView.characterLabel.text = "0/25"
+            // Screen Won't Change
+        }
+        
+        print("Done Move To Next Screen")
+        
+        return true
+    }
 }

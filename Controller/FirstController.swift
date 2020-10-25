@@ -21,8 +21,6 @@ class FirstController: UIViewController {
         
         self.firstView.startButton.addTarget(self, action: #selector(mainButtonTapped), for: .touchUpInside)
         
-       
-        
     }
     
     @objc func mainButtonTapped(_ Sender: UIButton){
