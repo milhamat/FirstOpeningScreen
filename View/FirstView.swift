@@ -22,7 +22,7 @@ class FirstView: UIView {
     let firstTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "You Metter"
-        label.font = UIFont(name: "Helvetica", size: 30)
+        label.font = UIFont(name: "Helvetica", size: 20)
         label.textColor = UIColor(red: 0.10, green: 0.38, blue: 0.49, alpha: 1.00)
         return label
     }()
@@ -30,7 +30,7 @@ class FirstView: UIView {
     let secondTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "You Story metter"
-        label.font = UIFont(name: "Helvetica", size: 30)
+        label.font = UIFont(name: "Helvetica", size: 20)
         label.textColor = UIColor(red: 0.10, green: 0.38, blue: 0.49, alpha: 1.00)
         return label
     }()
@@ -38,7 +38,7 @@ class FirstView: UIView {
     let thirdTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "You are Not Alone"
-        label.font = UIFont(name: "Helvetica", size: 40)
+        label.font = UIFont(name: "Helvetica", size: 30)
         label.textColor = UIColor(red: 0.10, green: 0.38, blue: 0.49, alpha: 1.00)
         return label
     }()
@@ -60,27 +60,28 @@ class FirstView: UIView {
         self.addSubview(thirdTitleLabel)
         self.addSubview(startButton)
         
-        firstTitleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(startButton.snp.top).offset(-180)
+        self.firstTitleLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(startButton.snp.top).offset(-120)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             
         }
         
-        secondTitleLabel.snp.makeConstraints { (make) in
+        self.secondTitleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(firstTitleLabel.snp.bottom).offset(5)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
         }
         
-        thirdTitleLabel.snp.makeConstraints { (make) in
+        self.thirdTitleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(secondTitleLabel.snp.bottom).offset(5)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
         }
         
-        startButton.snp.makeConstraints { (make) in
+        self.startButton.snp.makeConstraints { (make) in
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-50)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
+            make.left.equalTo(self.safeAreaLayoutGuide).offset(45)
+            make.right.equalTo(self.safeAreaLayoutGuide).offset(-45)
             make.height.equalTo(44)
-            make.width.equalTo(340)
         }
     }
     

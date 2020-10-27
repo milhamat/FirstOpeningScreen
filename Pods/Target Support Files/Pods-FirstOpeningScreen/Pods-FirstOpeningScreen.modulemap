@@ -1,0 +1,6 @@
+framework module Pods_FirstOpeningScreen {
+  umbrella header "Pods-FirstOpeningScreen-umbrella.h"
+
+  export *
+  module * { export * }
+}

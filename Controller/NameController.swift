@@ -25,6 +25,17 @@ class NameController: UIViewController {
         
         self.nameView.randomNameButton.addTarget(self, action: #selector(randomButtonTapped), for: .touchUpInside)
         
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+            self.nameView!.toolTipImageView.alpha = 1.0
+        }, completion: nil)
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+            
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+                self.nameView!.toolTipImageView.alpha = 0.0
+            }, completion: nil)
+            
+        }
     }
     
     @objc func randomButtonTapped(_ Sender: UIButton){
@@ -36,10 +47,10 @@ class NameController: UIViewController {
         nameView.inputNameTextField.text = randomName
         
         let htg = nameView.inputNameTextField.text?.count
-        nameView.characterLabel.text = "\(htg!)/25"
+        nameView.characterLabel.text = "\(htg!)/20"
         
         if nameView.inputNameTextField.text == ""{
-            nameView.characterLabel.text = "0/25"
+            nameView.characterLabel.text = "0/20"
         }
     }
 
@@ -51,9 +62,9 @@ extension NameController: UITextFieldDelegate {
         
         var htg = nameView.inputNameTextField.text?.count
 //        let tbh = htg! - 1
-        nameView.characterLabel.text = "\(htg!)/25"
+        nameView.characterLabel.text = "\(htg!)/20"
         
-        let maxLength = 25
+        let maxLength = 20
         let currentString: NSString = textField.text! as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
         
@@ -70,7 +81,7 @@ extension NameController: UITextFieldDelegate {
         // when user pressed DONE
         
         if nameView.inputNameTextField.text == ""{
-            nameView.characterLabel.text = "0/25"
+            nameView.characterLabel.text = "0/20"
             // Screen Won't Change
         }
         
