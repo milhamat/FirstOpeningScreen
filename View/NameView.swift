@@ -81,7 +81,7 @@ class NameView: UIView {
         self.backgroundColor = UIColor(red: 0.94, green: 0.89, blue: 0.87, alpha: 1.00)
         
         self.addSubview(inputNameTextField)
-        self.addSubview(randomNameButton)
+        self.inputNameTextField.addSubview(randomNameButton)
         self.addSubview(characterLabel)
         self.addSubview(firstLabel)
         self.addSubview(secondLabel)
@@ -92,19 +92,19 @@ class NameView: UIView {
             make.centerX.equalTo(self.safeAreaLayoutGuide).offset(-20)
             make.centerY.equalTo(self.safeAreaLayoutGuide)
             make.left.equalTo(self.safeAreaLayoutGuide).offset(10)
-            make.right.equalTo(self.safeAreaLayoutGuide).offset(-45)
+            make.right.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.height.equalTo(40)
         }
         
         self.randomNameButton.snp.makeConstraints { (make) in
-            make.left.equalTo(inputNameTextField.snp.right)
+            make.right.equalTo(self.inputNameTextField)
             make.centerY.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(40)
             make.width.equalTo(40)
         }
         
         self.characterLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(randomNameButton.snp.bottom).offset(5)
+            make.top.equalTo(inputNameTextField.snp.bottom).offset(5)
             make.right.equalTo(self.safeAreaLayoutGuide).offset(-8)
         }
         
